@@ -1,8 +1,7 @@
-export function NavBar() {
-  const scrollTo = (sectionIndex) => {
-    window.scrollTo({ top: sectionIndex * window.innerHeight, behavior: 'smooth' })
-  }
+const scrollTo = (sectionIndex) =>
+  window.scrollTo({ top: sectionIndex * window.innerHeight, behavior: 'smooth' })
 
+export function NavBar() {
   return (
     <nav className="bau-nav">
       <span className="bau-nav__logo" onClick={() => scrollTo(0)}>VK</span>

@@ -1,11 +1,11 @@
 import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { useScroll } from '@/contexts/ScrollContext'
+import { useDimensions } from '@/contexts/ScrollContext'
 import { World } from '@/components/world/World'
 import { FOV, FOV_FACTOR } from '@/constants/layout'
 
 export function AppCanvas() {
-  const { vh } = useScroll()
+  const { vh } = useDimensions()
   const initialCameraZ = vh / FOV_FACTOR
 
   return (

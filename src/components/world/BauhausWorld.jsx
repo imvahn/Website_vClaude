@@ -1,9 +1,10 @@
-import { useScroll } from '@/contexts/ScrollContext'
+import { useDimensions } from '@/contexts/ScrollContext'
 import { BauCircle3D } from '@/components/three/BauCircle3D'
 import { BauRect3D } from '@/components/three/BauRect3D'
 import { BauTriangle3D } from '@/components/three/BauTriangle3D'
 import { BauLine3D } from '@/components/three/BauLine3D'
 import { COLORS } from '@/constants/colors'
+import { BauModel3D } from '@/components/three/BauModel3D'
 
 // Kandinsky color-form pairings:
 //   Circle   → Blue   (receding, calm, concentrically deep)
@@ -15,11 +16,90 @@ import { COLORS } from '@/constants/colors'
 // rotation:  degrees (component converts × π/180)
 
 export function BauhausWorld() {
-  const { vw, vh } = useScroll()
+  const { vw, vh } = useDimensions()
 
   return (
     <>
       {/* ── HERO ZONE (camera Y: 0 → -vh) ────────────────────── */}
+
+      {/* custom model */}
+      <BauModel3D
+        path="/models/Nissan-GTR.glb"
+        position={[0, 0, -50]}
+        scale={100}
+        rotation={[0, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Big_Building.glb"
+        position={[-0.34 * vw, -0.58 * vh, -55]}
+        scale={50}
+        rotation={[0, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Bison.glb"
+        position={[0.38 * vw, -0.66 * vh, -260]}
+        scale={20}
+        rotation={[0, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Coin.glb"
+        position={[-0.06 * vw, -.7 * vh, -22]}
+        scale={100}
+        rotation={[0, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Fire_Hydrant.glb"
+        position={[0 * vw, -1.32 * vh, -58]}
+        scale={200}
+        rotation={[Math.PI / 6, Math.PI / 4, Math.PI / 12]}
+      />
+
+      <BauModel3D
+        path="/models/Flying_saucer.glb"
+        position={[-0.44 * vw, -1.3 * vh, -65]}
+        scale={100}
+        rotation={[0, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Guitar.glb"
+        position={[0 * vw, -1 * vh, -46]}
+        scale={300}
+        rotation={[Math.PI / 3, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Paper_airplane.glb"
+        position={[0.16 * vw, -1.94 * vh, -105]}
+        scale={2}
+        rotation={[Math.PI / 4, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Shoes.glb"
+        position={[-0.3 * vw, -1.9 * vh, -83]}
+        scale={10}
+        rotation={[0, -2 * Math.PI / 7, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Tree.glb"
+        position={[0.24 * vw, -1.8 * vh, -20]}
+        scale={.75}
+        rotation={[Math.PI / 6, Math.PI / 4, 0]}
+      />
+
+      <BauModel3D
+        path="/models/Truck.glb"
+        position={[0 * vw, -2.7 * vh, -65]}
+        scale={100}
+        rotation={[0, Math.PI / 4, 0]}
+      />
+
 
       {/* Large yellow triangle — upper left */}
       <BauTriangle3D
@@ -98,7 +178,7 @@ export function BauhausWorld() {
       {/* Giant red circle — right, very deep */}
       <BauCircle3D
         position={[0.31 * vw, -0.82 * vh, -215]}
-        radius={215}
+        radius={100}
         color={COLORS.RED}
         rotationX={0.22}
       />

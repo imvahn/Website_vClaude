@@ -29,18 +29,19 @@ src/
 │   ├── CameraRig.jsx (camera Z tied to vh; Y driven by p via useFrame)
 │   ├── world/
 │   │   ├── World.jsx (lights + BauhausWorld)
-│   │   └── BauhausWorld.jsx (28 hand-placed 3D shapes, no text)
+│   │   └── BauhausWorld.jsx (hand-placed 3D shapes + imported models, no text)
 │   ├── html/ (HTML overlay — independent of camera)
 │   │   ├── HtmlOverlay.jsx
 │   │   ├── NavBar.jsx (position: fixed)
 │   │   ├── HeroSection.jsx
 │   │   ├── AboutSection.jsx
 │   │   └── ProjectsSection.jsx
-│   └── three/ (reusable 3D primitives)
+│   └── three/ (reusable 3D primitives + model wrapper)
 │       ├── BauCircle3D.jsx  — rotation: rotationX (radians)
 │       ├── BauRect3D.jsx    — rotation: degrees, rotationX: radians
 │       ├── BauTriangle3D.jsx — rotation: degrees, rotationX: radians
 │       ├── BauLine3D.jsx    — rotation: degrees, rotationX: radians
+│       ├── BauModel3D.jsx   — imported .glb models, original materials
 │       ├── BauAxes.jsx
 │       └── Box3D.jsx
 ├── constants/
@@ -63,6 +64,8 @@ src/
 **Two-layer system:** R3F canvas owns only 3D geometry (no text). HTML overlay owns all readable content and nav — unaffected by camera. Sections positioned at `top: 0 / 100vh / 200vh` inside the overlay.
 
 **Bauhaus shape placement:** Kandinsky color-form pairings — circles=blue, triangles=yellow, rects=red, lines=black. Shapes distributed Y: 0 → -3×vh with varying Z depths (-20 to -295) for parallax. `rotation` prop = degrees; `rotationX` prop = radians.
+
+**Model imports:** `BauModel3D` accepts `.glb` files loaded via `useGLTF` from drei. Models keep original PBR materials. Props: `path` (string to `/public/models/`), `position` (viewport-relative), `scale`, `rotation` (radians).
 
 **Typography:** Big Shoulders Display (headings/logo) + IBM Plex Mono (labels, nav, body).
 
