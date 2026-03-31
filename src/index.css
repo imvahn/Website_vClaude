@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -26,7 +27,7 @@
   letter-spacing: 0.18px;
   color-scheme: light dark;
   color: var(--text);
-  background: var(--bg);
+  background: transparent;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -119,18 +120,12 @@
 
 body {
   margin: 0;
+  background: transparent;
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
 }
 
 h1,
@@ -257,7 +252,156 @@ code {
 @layer base {
   * {
     @apply border-border outline-ring/50;}
-  body {
-    @apply bg-background text-foreground;}
   html {
     @apply font-sans;}}
+
+/* ── Bauhaus Overlay System ────────────────────────────────── */
+
+.bau-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Navbar */
+.bau-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 52px;
+  pointer-events: auto;
+}
+
+.bau-nav__logo {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: #1A1A1A;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bau-nav__links {
+  display: flex;
+  gap: 36px;
+}
+
+.bau-nav__link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: #1A1A1A;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+.bau-nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #C8001E;
+  transition: width 0.25s ease;
+}
+
+.bau-nav__link:hover::after {
+  width: 100%;
+}
+
+/* Sections */
+.bau-section {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.bau-section--hero { top: 0; }
+.bau-section--about { top: 100vh; }
+.bau-section--projects { top: 200vh; }
+
+.bau-section__inner {
+  padding: 0 52px;
+}
+
+.bau-section__label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #1A1A1A;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.bau-section__heading {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 700;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  color: #1A1A1A;
+  margin: 0;
+}
+
+/* Hero */
+.bau-hero__content {
+  padding: 0 52px;
+}
+
+.bau-hero__label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #1A1A1A;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.bau-hero__name {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-weight: 900;
+  font-size: clamp(72px, 11vw, 160px);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  color: #1A1A1A;
+  margin: 0 0 24px;
+}
+
+.bau-hero__sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: #1A1A1A;
+  opacity: 0.55;
+}
+
+.bau-hero__scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 52px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: #1A1A1A;
+  opacity: 0.4;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
